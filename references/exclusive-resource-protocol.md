@@ -10,8 +10,11 @@ as a whole, a GUI with focus, or a remote session with one login.
    (for example "game: owned by agent `game-runner`, since 14:02").
 2. **Others queue, they do not poll.** A waiting agent does not loop on the resource. The orchestrator tells it
    "queued behind game-runner, you will get a handoff message" and the agent stops, or does non-resource work.
-3. **Handoffs go by message.** When the owner finishes, it reports and sends the orchestrator (or the next agent)
-   a short "resource free" message. The orchestrator then assigns the next owner. Do not let agents hand the
+   By default a queued task's agent is not spawned until handoff (SKILL.md section 3); the slot message is for an
+   agent that is already running and now needs the resource, or one spawned early because it has non-resource
+   work to do.
+3. **Handoffs go by message.** When the owner finishes, it reports and sends the orchestrator a short
+   "resource free" message. The orchestrator then assigns the next owner. Do not let agents hand the
    resource to each other without the orchestrator knowing.
 4. **Lock in the environment, not only in memory.** If the resource can be taken by a process that does not know
    about the agents (a second script, the user), use a lock file the tool checks at start, and delete it on the

@@ -24,6 +24,7 @@ RULES
 - Do not edit: <files or regions owned by other agents>.
 - Do not widen scope. If you find something outside the task, write it in the report; do not fix it.
 - Do not claim a fix works unless you ran the check named below. Say which checks you did.
+- Before any action that cannot be undone (a deletion, a push, a sent message, a sale), stop and report; do not do it.
 
 DELIVERABLE
 - Change(s): <files and what changes, or "no code changes">
@@ -46,6 +47,7 @@ Use these headings:
 - Name the lock or handoff signal when the work shares a resource (a file, a process, a device).
 - Give acceptance checks as observable facts ("the log line `destroyed` appears with N swings"), not as "make it
   work".
-- The model is set on the `Agent` call, not in the brief: always `model: "haiku"` unless the user asked for a
-  different model for this agent. Haiku follows a brief literally, so state the goal, paths and checks exactly.
+- The model is set on the `Agent` call (SKILL.md section 5), not in the brief: `model: "haiku"` by default,
+  `"sonnet"` for a bumped task, or whatever the user asked for. Haiku follows a brief literally, so state the goal,
+  paths and checks exactly.
 - Keep the report cap short (about 150-250 words). Long reports cost the orchestrator's context on every turn.
